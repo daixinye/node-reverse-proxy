@@ -1,0 +1,23 @@
+{
+  "name": "node-reverse-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "sudo node app/index.js",
+    "getall": "node index.js getall",
+    "get": "node index.js get",
+    "set": "node index.js set",
+    "del": "node index.js del"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daixinye/node-reverse-proxy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daixinye/node-reverse-proxy/issues"
+  },
+  "homepage": "https://github.com/daixinye/node-reverse-proxy#readme"
+}
