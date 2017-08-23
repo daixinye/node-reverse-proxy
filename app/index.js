@@ -1,14 +1,16 @@
 const http = require('http')
 const url = require('url')
+const net = require('net')
+
 const config = require('../config/')
 
-const server = http.createServer(function(req, res){
-    
-    let host = req.headers.host
-    let port = config.get(host)
+const server = http.createServer(function (req, res) {
 
-    if(!port){
-        return res.end('reverse-proxy: cant find config for '+host)
+    let host = req.headers.host
+    let port = net.isIP(host) > 0 ? config.get('DEFAULT') : config.get(host)
+
+    if (!port) {
+        return res.end('reverse-proxy: cant find config for ' + host)
     }
 
     let options = {

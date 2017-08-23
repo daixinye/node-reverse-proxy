@@ -1,4 +1,5 @@
 {
-    "server2.local.com": "8882",
-    "server1.local.com": "8080"
+    "DEFAULT": "7003",
+    "yunying.local.beibei.com": "7000",
+    "edu.local.beibei.com": "7001"
 }
