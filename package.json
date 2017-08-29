@@ -9,7 +9,8 @@
     "get": "node index.js get",
     "set": "node index.js set",
     "del": "node index.js del",
-    "setDefault": "node index.js setDefault"
+    "setDefault": "node index.js setDefault",
+    "hijack": "sudo node app/index.js -hijack"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/daixinye/node-reverse-proxy#readme",
   "devDependencies": {
-    "chalk": "^2.1.0"
+    "chalk": "^2.1.0",
+    "redis": "^2.8.0"
   }
 }
