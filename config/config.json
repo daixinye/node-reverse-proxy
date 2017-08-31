@@ -1,5 +1,6 @@
 {
-    "DEFAULT": "7001",
-    "server1.local.com": "7000",
-    "server2.local.com": "7001"
+  "DEFAULT": "7001",
+  "yunying.local.beibei.com": "7000",
+  "edu.local.beibei.com": "7001",
+  "mocker.local.guapizuzhi.com": "3000"
 }
