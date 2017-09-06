@@ -4,7 +4,7 @@
   "description": "simple http reverse proxy cli tool",
   "main": "app/index.js",
   "bin": {
-    "nrp": "index.js"
+    "nrp": "/bin/bin.js"
   },
   "scripts": {
     "start": "sudo node index.js start",
