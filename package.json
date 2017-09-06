@@ -1,36 +1,38 @@
 {
-  "name": "node-reverse-proxy",
+  "name": "nrp-cli",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple http reverse proxy cli tool",
   "main": "app/index.js",
+  "bin": {
+    "nrp": "index.js"
+  },
   "scripts": {
-    "start": "sudo node app/index.js",
+    "start": "sudo node index.js start",
     "getall": "node index.js getall",
     "get": "node index.js get",
     "set": "node index.js set",
     "del": "node index.js del",
-    "setDefault": "node index.js setDefault",
-    "hijack": "sudo node app/index.js -hijack"
+    "setDefault": "node index.js setDefault"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daixinye/node-reverse-proxy.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/daixinye/node-reverse-proxy/issues"
   },
   "homepage": "https://github.com/daixinye/node-reverse-proxy#readme",
   "devDependencies": {
-    "chalk": "^2.1.0",
     "eslint": "^4.5.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "redis": "^2.8.0"
+    "eslint-plugin-standard": "^3.0.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chalk": "^2.1.0"
+  }
 }
