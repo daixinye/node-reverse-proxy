@@ -3,7 +3,7 @@ const fs = require('fs')
 
 module.exports = {
   get: function (hostname) {
-    return hostname == '*' ? config : config[hostname] || null
+    return hostname === '*' ? config : config[hostname] || null
   },
   set: function (hostname, port) {
     config[hostname] = port.toString()
