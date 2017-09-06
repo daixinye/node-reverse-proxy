@@ -1,34 +1,41 @@
 # Node-Reverse-Proxy
 
-A reverse proxy with node.js
+Simple http reverse proxy cli tool
+
+## Install
+
+```
+npm install nrp-cli -g
+```
 
 ## Usage
 
 ### start proxy
+need sudo
 ```
-npm run start
+sudo nrp-cli start
 ```
 
 ## Config Commands
 ### get configs
 get all configs
 ```
-npm run getall
+nrp-cli getall
 ```
 
 get specific config
 ```
-npm run get HOSTNAME
+nrp-cli get HOSTNAME
 ```
 
 ### set config
 ```
-npm run set HOSTNAME PORT
+nrp-cli set HOSTNAME PORT
 ```
 
 ### delete config
 ```
-npm run del HOSTNAME
+nrp-cli del HOSTNAME
 ```
 
 ## Default
@@ -37,5 +44,8 @@ when the host is IP, you can set the DEFAULT port as the server.
 
 ### set default
 ```
-npm run setDefault PORT
+nrp-cli setDefault PORT
 ```
+
+## Authors
+[daixinye](https://github.com/daixinye)

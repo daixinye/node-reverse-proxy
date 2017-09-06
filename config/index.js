@@ -1,5 +1,13 @@
-const config = require('./config')
+const path = require('path')
 const fs = require('fs')
+
+let configPath = path.resolve(__dirname, 'config.json')
+try {
+  var config = require(configPath)
+} catch (e) {
+  fs.writeFileSync(configPath, JSON.stringify({}, null, 4))
+  config = {}
+}
 
 module.exports = {
   get: function (hostname) {
@@ -7,16 +15,10 @@ module.exports = {
   },
   set: function (hostname, port) {
     config[hostname] = port.toString()
-    return fs.writeFileSync(
-      './config/config.json',
-      JSON.stringify(config, null, 4)
-    )
+    return fs.writeFileSync(configPath, JSON.stringify(config, null, 4))
   },
   del: function (hostname) {
     delete config[hostname]
-    return fs.writeFileSync(
-      './config/config.json',
-      JSON.stringify(config, null, 4)
-    )
+    return fs.writeFileSync(configPath, JSON.stringify(config, null, 4))
   }
 }

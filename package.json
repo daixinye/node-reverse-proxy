@@ -1,10 +1,10 @@
 {
   "name": "nrp-cli",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "simple http reverse proxy cli tool",
   "main": "app/index.js",
   "bin": {
-    "nrp": "/bin/bin.js"
+    "nrp-cli": "./bin/bin.js"
   },
   "scripts": {
     "start": "sudo node index.js start",
