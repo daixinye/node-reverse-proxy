@@ -1,7 +1,7 @@
 {
   "name": "nrp-cli",
-  "version": "1.0.6",
-  "description": "simple http reverse proxy cli tool",
+  "version": "1.0.7",
+  "description": "Simple http reverse proxy cli tool",
   "main": "app/index.js",
   "bin": {
     "nrp-cli": "./bin/bin.js"
