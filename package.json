@@ -1,6 +1,6 @@
 {
   "name": "nrp-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Simple http reverse proxy cli tool",
   "main": "app/index.js",
   "bin": {
@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "sudo node index.js start",
-    "getall": "node index.js getall",
     "get": "node index.js get",
     "set": "node index.js set",
     "del": "node index.js del",
