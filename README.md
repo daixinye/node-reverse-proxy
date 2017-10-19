@@ -20,7 +20,7 @@ $ sudo nrp-cli start
 ### get configs
 get all configs
 ```shell
-$ nrp-cli getall
+$ nrp-cli get
 ```
 
 get specific config
@@ -47,5 +47,5 @@ when the host is IP, you can set the DEFAULT port as the server.
 $ nrp-cli setDefault PORT
 ```
 
-## Authors
+## Author
 [daixinye](https://github.com/daixinye)
