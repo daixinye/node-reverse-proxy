@@ -1,45 +1,56 @@
-const config = require('./config/')
+const Config = require('./config/')
+const Output = require('./lib/output')
 const process = require('process')
-const chalk = require('chalk')
 
+let output = new Output()
+let config = new Config()
 let command = process.argv[2]
+
 switch (command) {
   case 'get':
     var hostname = process.argv[3]
-    if (typeof hostname == 'undefined')
-      return console.log(chalk.red('error: need argument HOSTNAME'))
-    console.log(chalk.green(config.get(hostname)))
-    break
-
-  case 'getall':
-    console.log(config.get('*'))
+    if (typeof hostname === 'undefined') {
+      output.success(
+        config.get('*').toString() ||
+          'there is no config could be found, use "nrp-cli set HOSTNAME PORT" to add a config'
+      )
+    } else {
+      output.success(config.get(hostname))
+    }
     break
 
   case 'set':
     var hostname = process.argv[3],
       port = process.argv[4]
-    if (typeof hostname == 'undefined')
-      return console.log(chalk.red('error: need argument HOSTNAME'))
-    if (typeof port == 'undefined')
-      return console.log(chalk.red('error: need argument PORT'))
+    if (typeof hostname === 'undefined') {
+      return output.error('need argument HOSTNAME')
+    }
+    if (typeof port === 'undefined') {
+      return output.error('need argument PORT')
+    } else if (Number.isNaN(Number(port))) {
+      return output.error('PORT should be a number')
+    }
     config.set(hostname, port)
-    console.log(chalk.green('OK'))
+    output.success()
     break
 
   case 'setDefault':
     var port = process.argv[3]
-    if (typeof port == 'undefined')
-      return console.log(chalk.red('error: need argument PORT'))
+    if (typeof port === 'undefined') {
+      return output.error('need argument PORT')
+    } else if (Number.isNaN(Number(port))) {
+      return output.error('PORT should be a number')
+    }
     config.set('DEFAULT', port)
-    console.log(chalk.green('OK'))
+    output.success()
     break
 
   case 'del':
     var hostname = process.argv[3]
     if (typeof hostname == 'undefined')
-      return console.log(chalk.red('error: need argument HOSTNAME'))
+      return output.error('need argument HOSTNAME')
     config.del(hostname)
-    console.log(chalk.green('OK'))
+    output.success()
     break
 
   case 'start':
@@ -47,5 +58,5 @@ switch (command) {
     break
 
   default:
-    console.log(chalk.red('error: invalid command'))
+    output.error('invalid command')
 }
