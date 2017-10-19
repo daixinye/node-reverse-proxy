@@ -1,5 +1,5 @@
 const http = require('http')
-const config = require('../config/')
+const Config = require('../config/')
 const Output = require('../lib/output')
 const middleware = [
   require('../middleware/log'),
@@ -7,6 +7,7 @@ const middleware = [
 ]
 
 const output = new Output()
+const config = new Config()
 
 const server = http.createServer(function (req, res) {
   const ctx = {
