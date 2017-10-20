@@ -12,7 +12,7 @@ switch (command) {
     if (typeof hostname === 'undefined') {
       output.success(
         config.get('*').toString() ||
-          'there is no config could be found, use "nrp-cli set HOSTNAME PORT" to add a config'
+          'No configruation found, use "nrp-cli set HOSTNAME PORT" to add a configruation'
       )
     } else {
       output.success(config.get(hostname))
