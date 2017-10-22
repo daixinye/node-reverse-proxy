@@ -28,11 +28,17 @@ function ls () {
 function add (hostname, port) {
   var isExist = new Set(Object.keys(config)).has(hostname)
   if (isExist) {
-    return error('%s already exists', hostname)
+    return error('hostname %s already exists', hostname)
   }
   var isNaN = Number.isNaN(+port)
   if (isNaN) {
     return error('port %s should be a number', port)
+  }
+  var isPortUsed = new Set(
+    Object.keys(config).map(hostname => config[hostname])
+  ).has(+port)
+  if (isPortUsed) {
+    return error('port %s is already used', port)
   }
 
   config[hostname] = +port
@@ -42,7 +48,7 @@ function add (hostname, port) {
 function set (hostname, port) {
   var isNotExist = !new Set(Object.keys(config)).has(hostname)
   if (isNotExist) {
-    return error('%s not exists', hostname)
+    return error('hostname %s not exists', hostname)
   }
   var isNaN = Number.isNaN(+port)
   if (isNaN) {
@@ -60,7 +66,7 @@ function set (hostname, port) {
 function del (hostname) {
   var isNotExist = !new Set(Object.keys(config)).has(hostname)
   if (isNotExist) {
-    return error('%s not exists', hostname)
+    return error('hostname %s not exists', hostname)
   }
 
   delete config[hostname]
