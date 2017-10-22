@@ -17,35 +17,22 @@ $ sudo nrp-cli start
 ```
 
 ## Config Commands
-### get configs
-get all configs
+### list configs
+list all configs
 ```shell
-$ nrp-cli get
-```
-
-get specific config
-```shell
-$ nrp-cli get HOSTNAME
+$ nrp-cli list
 ```
 
 ### set config
 ```shell
-$ nrp-cli set HOSTNAME PORT
+$ nrp-cli set <hostname> <port>
 ```
 
 ### delete config
 ```shell
-$ nrp-cli del HOSTNAME
+$ nrp-cli del <hostname> <port>
 ```
 
-## Default
-
-when the host is IP, you can set the DEFAULT port as the server.
-
-### set default
-```shell
-$ nrp-cli setDefault PORT
-```
 
 ## Author
 [daixinye](https://github.com/daixinye)

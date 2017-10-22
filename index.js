@@ -1,62 +1,23 @@
-const Config = require('./config/')
-const Output = require('./lib/output')
-const process = require('process')
+const program = require('commander')
 
-let output = new Output()
-let config = new Config()
-let command = process.argv[2]
+program.version('2.0.0')
 
-switch (command) {
-  case 'get':
-    var hostname = process.argv[3]
-    if (typeof hostname === 'undefined') {
-      output.success(
-        config.get('*').toString() ||
-          'there is no config could be found, use "nrp-cli set HOSTNAME PORT" to add a config'
-      )
-    } else {
-      output.success(config.get(hostname))
-    }
-    break
+// commands definition
+program.command('list').action(list)
 
-  case 'set':
-    var hostname = process.argv[3],
-      port = process.argv[4]
-    if (typeof hostname === 'undefined') {
-      return output.error('need argument HOSTNAME')
-    }
-    if (typeof port === 'undefined') {
-      return output.error('need argument PORT')
-    } else if (Number.isNaN(Number(port))) {
-      return output.error('PORT should be a number')
-    }
-    config.set(hostname, port)
-    output.success()
-    break
+program.command('add <hostname> <port>').action(add)
 
-  case 'setDefault':
-    var port = process.argv[3]
-    if (typeof port === 'undefined') {
-      return output.error('need argument PORT')
-    } else if (Number.isNaN(Number(port))) {
-      return output.error('PORT should be a number')
-    }
-    config.set('DEFAULT', port)
-    output.success()
-    break
+program.command('set <hostname> <port>').action(set)
 
-  case 'del':
-    var hostname = process.argv[3]
-    if (typeof hostname == 'undefined')
-      return output.error('need argument HOSTNAME')
-    config.del(hostname)
-    output.success()
-    break
+program.command('del <hostname>').action(del)
 
-  case 'start':
-    require('./app/index.js')
-    break
+program.parse(process.argv)
 
-  default:
-    output.error('invalid command')
-}
+// actions
+function list () {}
+
+function add (hostname, port) {}
+
+function set (hostname, port) {}
+
+function del (hostname, port) {}
