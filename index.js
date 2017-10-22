@@ -5,15 +5,38 @@ const config = require('./config')
 program.version('2.0.0')
 
 // commands
-program.command('ls').action(ls)
+program
+  .command('start')
+  .description('Start the proxy server')
+  .action(function () {
+    require('./app')
+  })
 
-program.command('add <hostname> <port>').action(add)
+program
+  .command('ls')
+  .description('List all the configs')
+  .action(ls)
 
-program.command('set <hostname> <port>').action(set)
+program
+  .command('add <hostname> <port>')
+  .description('Add a config')
+  .action(add)
 
-program.command('del <hostname>').action(del)
+program
+  .command('set <hostname> <port>')
+  .description('Set an existed config')
+  .action(set)
+
+program
+  .command('del <hostname>')
+  .description('Delete an existed config')
+  .action(del)
 
 program.parse(process.argv)
+
+if (process.argv.length === 2) {
+  program.outputHelp()
+}
 
 // actions
 function ls () {
@@ -22,7 +45,7 @@ function ls () {
     var port = config[hostname]
     output += line(hostname) + port + '\n\r'
   })
-  console.log(output)
+  console.log(output === '\n\r' ? 'no config found' : output)
 }
 
 function add (hostname, port) {
