@@ -1,14 +1,18 @@
 const http = require('http')
 const url = require('url')
-const net = require('net')
+const config = require('../config.json')
 
-module.exports = function ({ req, res, config, db }) {
-  let host = req.headers.host
-  let port = net.isIP(host) > 0 ? config.get('DEFAULT') : config.get(host)
+module.exports = function ({ req, res }) {
+  const hostname = req.headers.host
 
-  if (!port) {
-    return res.end('reverse-proxy: cant find config for ' + host)
+  let isNotExist = !new Set(Object.keys(config)).has(hostname)
+  if (isNotExist) {
+    res.end('An error occured: cant find config for ' + hostname)
+    console.log('An error occured: cant find config for ' + hostname)
+    return
   }
+
+  const port = config[hostname]
 
   let options = {
     host: '127.0.0.1',

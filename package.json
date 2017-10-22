@@ -1,13 +1,13 @@
 {
   "name": "nrp-cli",
   "version": "2.0.0",
-  "description": "Simple http reverse proxy cli tool",
+  "description": "Simple local http reverse proxy cli tool",
   "main": "index.js",
   "bin": {
     "nrp-cli": "./index.js"
   },
   "scripts": {
-    "test": "node index.js"
+    "test": "node test.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
-    "chalk": "^2.1.0",
-    "commander": "^2.11.0"
+    "commander": "^2.11.0",
+    "moment": "^2.19.1"
   }
 }
