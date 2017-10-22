@@ -1,6 +1,8 @@
+#!/usr/bin/env node
 const program = require('commander')
 const fs = require('fs')
-const config = require('./config')
+const path = require('path')
+var config = require('./config.json')
 
 program.version('2.0.0')
 
@@ -99,7 +101,9 @@ function del (hostname) {
 // helpers
 function line (str) {
   str = String(str)
-  return str + ' ' + Array(16 - str.length).join('-') + ' '
+  return (
+    str + ' ' + Array(20 - str.length > 0 ? 20 - str.length : 1).join('-') + ' '
+  )
 }
 
 function error () {
@@ -113,5 +117,8 @@ function save (config) {
   if (isNotObj) {
     return error('variable config should be a json object')
   }
-  return fs.writeFileSync('./config.json', JSON.stringify(config, null, 2))
+  return fs.writeFileSync(
+    path.resolve(__dirname, './config.json'),
+    JSON.stringify(config, null, 2)
+  )
 }
