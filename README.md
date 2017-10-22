@@ -1,6 +1,6 @@
 # Node-Reverse-Proxy
 
-Simple http reverse proxy cli tool
+Simple local http reverse proxy cli tool
 
 ## Install
 
@@ -20,7 +20,12 @@ $ sudo nrp-cli start
 ### list configs
 list all configs
 ```shell
-$ nrp-cli list
+$ nrp-cli ls
+```
+
+### add config
+```shell
+$ nrp-cli add <hostname> <port>
 ```
 
 ### set config
