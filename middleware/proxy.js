@@ -1,8 +1,12 @@
 const http = require('http')
 const url = require('url')
-const config = require('../config.json')
+const fs = require('fs')
+const path = require('path')
 
 module.exports = function ({ req, res }) {
+  const config = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../config.json'))
+  )
   const hostname = req.headers.host
 
   let isNotExist = !new Set(Object.keys(config)).has(hostname)
