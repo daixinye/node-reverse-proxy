@@ -7,8 +7,9 @@ module.exports = function ({ req, res }) {
 
   let isNotExist = !new Set(Object.keys(config)).has(hostname)
   if (isNotExist) {
-    res.end('An error occured: cant find config for ' + hostname)
-    console.log('An error occured: cant find config for ' + hostname)
+    let errtxt = 'An error occured: cant find config for ' + hostname
+    res.end(errtxt)
+    console.log(errtxt)
     return
   }
 
@@ -29,7 +30,11 @@ module.exports = function ({ req, res }) {
         response.pipe(res)
       })
       .on('error', e => {
-        console.log(e)
+        if (e.errno === 'ECONNREFUSED') {
+          let errtxt = `An error occured: cant access ${options.host}:${options.port}`
+          res.end(errtxt)
+          console.log(errtxt)
+        }
       })
   )
 }
