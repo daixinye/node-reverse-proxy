@@ -59,12 +59,6 @@ function add (hostname, port) {
   if (isNaN) {
     return error('port %s should be a number', port)
   }
-  var isPortUsed = new Set(
-    Object.keys(config).map(hostname => config[hostname])
-  ).has(+port)
-  if (isPortUsed) {
-    return error('port %s is already used', port)
-  }
 
   config[hostname] = +port
   save(config)
