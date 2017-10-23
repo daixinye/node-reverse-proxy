@@ -1,6 +1,6 @@
 {
   "name": "nrp-cli",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "description": "Simple local http reverse proxy cli tool",
   "main": "index.js",
   "bin": {
